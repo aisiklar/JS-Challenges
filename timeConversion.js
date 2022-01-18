@@ -14,10 +14,11 @@ let time2 = "07:01:05AM"; // expected output: "07:01:05"
 let time3 = "12:01:05PM"; // expected output: "12:01:05"
 let time4 = "07:05:00PM"; // expected output: "19:05:05"
 
-let convertedTime1 = timeConversion(time1);
-let convertedTime2 = timeConversion(time2);
-let convertedTime3 = timeConversion(time3);
-let convertedTime4 = timeConversion(time4);
+// timeConversion function takes "array" as arguments
+let convertedTime1 = timeConversion(time1.split(''));
+let convertedTime2 = timeConversion(time2.split(''));
+let convertedTime3 = timeConversion(time3.split(''));
+let convertedTime4 = timeConversion(time4.split(''));
 
 console.log(`convertedTime1 = ${convertedTime1}`);
 console.log(`convertedTime2 = ${convertedTime2}`);
@@ -28,28 +29,26 @@ function timeConversion(s) {
 
     // Write your code here
     // the s argument is expected to be in the form: aa:bb:ccAM or aa:bb:ccPM
-    console.log(`the input argument, s: ${s}`); //debug
-    console.log(`the s.slice(8, 10) = ${s.slice(8, 9)}`); // debug
-
-    if (s.slice(8, 10) == 'AM' ) {
-        console.log("in the AM if block...") // debug
-        let first2Digits = toString(parseInt(s.slice(0,2)) % 12);
-        console.log(`first2Digits = ${first2Digits}`); //debug
-        return s.splice(0, 2, first2Digits);
-    } else if (s.slice(8, 10) == 'PM') {
-        console.log("in the PM if block...") // debug
-        if (parseInt(s.slice(0, 2)) == 12) {
-            console.log("in the PM & 12 if block...") // debug
-            let first2Digits = '12';
-            console.log(`first2Digits = ${first2Digits}`); //debug
+    // check if the last two items of the array (converted to string) is AM or PM
+    if (s.slice(8, 10).join('') === 'AM' ) {
+        // if AM, the 24 hour conversion can be done by taking modulus of 12
+        // it is important to have the result "2 digits". Therefore, prefixed 0, and take last two elements
+        let first2Digits = ('0' + (parseInt(s.slice(0,2).join('')) % 12)).slice(-2);
+        return replaceDigits(s, first2Digits);
+    } else if (s.slice(8, 10).join('') === 'PM') {
+        if (parseInt(s.slice(0, 2).join('')) == 12) {
+            var first2Digits = '12';
         } else {
-            console.log("in the PM & else block...") // debug
-            let first2Digits = toString(12 + parseInt(s.slice(0, 2))) ;
-            console.log(`first2Digits = ${first2Digits}`); //debug
+            first2Digits = (12 + parseInt(s.slice(0, 2).join(''))).toString() ;
         }
-        return s.splice(0,1,first2Digits);
+        return replaceDigits(s, first2Digits);
     }
-
+}
+// replace the first two items with the new values and return a string s
+function replaceDigits(s, first2Digits) {
+    s.splice(0, 2, first2Digits[0], first2Digits[1]);
+    s.splice(8);
+    return s.join('');
 }
 
 
