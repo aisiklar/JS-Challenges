@@ -1,5 +1,15 @@
+# files that wont be pushed to github
+camelCase.js
+stdin.js
+camelCase4.js
+readlineEx.js
+
+
+# files that I need to check later on
 childModule1.mjs
 childModule2.mjs
 exportImportModule.js
 parentModule.js
-camelCase.js
+lonelyInteger.js
+
+# files that I am working on
