@@ -9,7 +9,6 @@ childModule1.mjs
 childModule2.mjs
 exportImportModule.js
 parentModule.js
-lonelyInteger.js
 
 # files that I am working on
 findMedian.js

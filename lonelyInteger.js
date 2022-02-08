@@ -1,6 +1,7 @@
 // hackerrank challenge, lonely integer
 
 'use strict';
+const fs = require('fs');
 
 /*
  * Complete the 'lonelyinteger' function below.
@@ -11,32 +12,35 @@
 
 let a = [1, 2, 2, 3, 1, 4] ;
 
-console.log(lonelyInteger(a));
-console.log(`now the array a: ${a}`);
-console.log(lonelyInteger2(a));
+console.log(lonelyInteger(a)); //must return [3, 4]
 
 
-// finding the unique element by creating a Set from array a
+// array a = [1, 2, 2, 3, 1, 4] 
 function lonelyInteger(a) {
-    // Write your code here
-    return [...new Set(a)];
-}
-
-function lonelyInteger2(a) {
-    a.sort();
-    console.log(`the sorted array a: ${a}`);
-    a.filter(item => {
-        console.log("entering the filter callback function");
-        console.log(`the array a: ${a}`);
-        console.log(`the item is ${item}`);
-        if (item == a[a.indexOf(item) + 1]){
-            // debug
-            console.log("entering the if block");
-            console.log(`the item is ${item}, and indexOf(item): ${a.indexOf(item)}
-            and the a[a.indexOf(item) + 1] = ${a[a.indexOf(item)]}`)
-            a.splice(a.indexOf(item), a.indexOf(item));
-            console.log(`the array a after splice is ${a}`)
+    // construct a Set with one of each value from array a
+    let mySet = new Set(a); // Set(4) { 1, 2, 3, 4 }
+    console.log(mySet);
+    // construct an array from the Set
+    let myArr = Array.from(mySet);
+    console.log(mySet); // Set(4) { 1, 2, 3, 4 }
+    console.log(myArr); // [1,2,3,4]
+    //define an array of multiples, to store all the elements with more than one in.
+    let multiples = [];
+    //iterate through each of element in array a
+    a.forEach((element, index) => {
+        for(let i = index + 1; i < a.length; i++) {
+            if (element == a[i]) {
+                multiples.push(element);
+            }
         }
-    });
-    return a;
+    })
+    //console.log('multiples array:') //test
+    //console.log(multiples); // [1,2]
+    // find the difference between two arrays
+    // myArr = [1,2,3,4]
+    // multiples = [1,2]
+    let lonelyInts = myArr.filter(x => !multiples.includes(x));
+    return lonelyInts; // [3,4]
+
+
 }
