@@ -26,3 +26,9 @@ console.log(`testing1: ${regex1.test(str1)}`); //returns true
 let regex2 = /^ab$/;
 let str2 = 'aba';
 console.log(`testing2: ${regex2.test(str2)}`); //returns false
+
+let chewieRegex = /Aa*/g
+let str3 = "He made a fair move. Screaming about it can't help you";
+let str4 = "Let him have it. It's not wise to upset a Wookiee";
+console.log(str3.match(chewieRegex));
+console.log(str4.match(chewieRegex));
