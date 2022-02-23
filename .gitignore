@@ -5,6 +5,8 @@ camelCase4.js
 readlineEx.js
 functionsEx.js
 littleScripts.js
+iterateObjKeys.js
+
 
 # files that I need to check later on
 childModule1.mjs
@@ -14,3 +16,5 @@ parentModule.js
 
 # files that I am working on
 findMedian.js
+flippingMatrix.js
+permutingTwoArrays.js
