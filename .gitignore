@@ -6,6 +6,7 @@ readlineEx.js
 functionsEx.js
 littleScripts.js
 iterateObjKeys.js
+equalityInArrays.js
 
 
 # files that I need to check later on
@@ -17,3 +18,4 @@ parentModule.js
 # files that I am working on
 findMedian.js
 flippingMatrix.js
+findGivenSum.js
