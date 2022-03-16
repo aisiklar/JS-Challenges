@@ -7,7 +7,7 @@
 // '1234' --> '1', '2', '3', '4'
 // '91011' --> '9', '10', '11'
 // '99100' --> '99', '100'
-// return YES, x (first number in the separated series) or NO
+// return YES, x (first number in the separated series) or NOxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 "use strict";
 
